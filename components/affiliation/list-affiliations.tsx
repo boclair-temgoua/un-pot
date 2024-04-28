@@ -51,83 +51,6 @@ export const ListAffiliations = ({ item, index }: Props) => {
 
   return (
     <>
-      {/* <div key={index} className="divide-gray-200 py-4">
-        <div className="flex items-center">
-          <div className="ml-3 min-w-0 flex-1 cursor-pointer">
-            <div className="flex items-center text-gray-600">
-              <button className="tex-sm">
-                <AiOutlineCalendar />
-              </button>
-              <span className="ml-1.5 text-sm font-normal">
-                {formateDate(item?.createdAt as Date, locale)}
-              </span>
-            </div>
-
-            <div className="flex items-center">
-              {item?.product?.title ? (
-                <p className="mt-2 text-lg font-bold">
-                  <ReadMore
-                    html={String(item?.product?.title ?? '')}
-                    value={100}
-                  />
-                </p>
-              ) : null}
-            </div>
-
-            <div className="mt-2 flex items-center text-gray-600">
-              <span className="font-bold">
-                <MailIcon className="size-4" />
-              </span>
-              <span className="ml-1.5 text-sm">{item?.profile?.email}</span>
-
-              <span className="ml-1.5 font-bold">
-                <PercentIcon className="size-4" />
-              </span>
-              <span className="ml-1.5 text-sm">{item?.percent}</span>
-            </div>
-          </div>
-
-          <div className="py-4 text-right text-sm font-medium">
-            <ButtonCopy
-              size="icon"
-              variant="ghost"
-              title="Copy link"
-              link={`${process.env.NEXT_PUBLIC_SITE}/shop/${item?.product?.slug}?affiliate=${item?.code}/`}
-              iconClassName="size-4 text-gray-600 hover:text-green-600"
-            />
-
-            <ButtonInput
-              variant="ghost"
-              type="button"
-              size="icon"
-              icon={
-                <PencilIcon className="size-4 text-gray-600 hover:text-indigo-600" />
-              }
-              onClick={() => setShowModal(true)}
-            />
-
-            <ActionModalDialog
-              title="Delete?"
-              loading={loading}
-              isOpen={isOpen}
-              setIsOpen={setIsOpen}
-              onClick={() => deleteItem(item)}
-              description="Are you sure you want to delete this?"
-              buttonDialog={
-                <ButtonInput
-                  variant="ghost"
-                  type="button"
-                  size="icon"
-                  icon={
-                    <TrashIcon className="size-4 text-gray-600 hover:text-red-600" />
-                  }
-                />
-              }
-            />
-          </div>
-        </div>
-      </div> */}
-
       <tr key={index}>
         <td className="py-4 text-sm font-bold">
           <div className="flex min-w-0 flex-1 items-center">
@@ -175,14 +98,14 @@ export const ListAffiliations = ({ item, index }: Props) => {
         <td className="py-4 text-right text-sm font-medium">
           <ButtonCopy
             size="icon"
-            variant="ghost"
+            variant="link"
             title="Copy link"
             link={`${process.env.NEXT_PUBLIC_SITE}/shop/${item?.product?.slug}?affiliate=${item?.code}/`}
             iconClassName="size-4 text-gray-600 hover:text-green-600"
           />
 
           <ButtonInput
-            variant="ghost"
+            variant="link"
             type="button"
             size="icon"
             icon={
@@ -200,7 +123,7 @@ export const ListAffiliations = ({ item, index }: Props) => {
             description="Are you sure you want to delete this?"
             buttonDialog={
               <ButtonInput
-                variant="ghost"
+                variant="link"
                 type="button"
                 size="icon"
                 icon={

@@ -36,7 +36,7 @@ const HorizontalNavSite = ({ user, showDrawer }: Props) => {
   return (
     <>
       <header className="sticky top-0 z-20 border-b border-gray-100 bg-white dark:border-gray-800 dark:bg-black/5">
-        <div className="mx-auto px-4">
+        <div className="mx-auto max-w-7xl">
           <div className="flex h-16 items-center justify-between">
             <div className="-m-3 flex items-center lg:hidden">
               <Button onClick={showDrawer} type="button" variant="ghost">
