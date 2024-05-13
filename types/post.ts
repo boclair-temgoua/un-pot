@@ -72,4 +72,5 @@ export type GetOnPostQueryModel = {
   organizationId?: string;
   postSlug?: string;
   userVisitorId?: string;
+  organizationVisitorId?: string;
 };

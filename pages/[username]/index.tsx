@@ -37,10 +37,11 @@ const ProfilePublic = () => {
                 {user?.id ? (
                   <PublicPostsHome
                     typeIds={['ARTICLE', 'AUDIO', 'VIDEO', 'GALLERY']}
+                    organizationId={user?.organizationId}
                     userVisitor={{
                       id: userVisiter?.id,
                       username: username,
-                      organizationId: user?.organizationId,
+                      organizationId: userVisiter?.organizationId,
                     }}
                   />
                 ) : null}
@@ -61,7 +62,7 @@ const ProfilePublic = () => {
                     Send message
                   </ButtonInput>
                 </div>
-              ):null}
+              ) : null}
 
               {user?.profile?.description && (
                 <div className="mt-4 overflow-hidden rounded-lg bg-white dark:bg-[#121212]">

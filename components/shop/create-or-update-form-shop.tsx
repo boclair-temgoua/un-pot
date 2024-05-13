@@ -113,6 +113,7 @@ const CreateOrUpdateFormShop = ({
         'urlRedirect',
         'enableUrlRedirect',
         'enableDiscount',
+        'categoryId',
         'discountId',
         'messageAfterPayment',
       ];

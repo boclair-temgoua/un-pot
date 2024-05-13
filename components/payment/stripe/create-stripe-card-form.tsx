@@ -10,7 +10,6 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Input } from '@/components/ui/input';
 import { AlertDangerNotification } from '@/utils';
 import { generateLongUUID } from '@/utils/generate-random';
-import { useStripe } from '@stripe/react-stripe-js';
 import { Checkbox } from 'antd';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
@@ -18,10 +17,6 @@ import { StripeProps } from './create-payment-stripe';
 
 const CreateStripeCardForm = ({ data, paymentModel }: StripeProps) => {
   const { push } = useRouter();
-  const stripe = useStripe();
-  if (!stripe) {
-    return;
-  }
   const { loading, setLoading, hasErrors, setHasErrors } = useInputState();
   const [isSaveCard, setIsSaveCard] = useState(false);
   const [cardstate, setcardState] = useState({
@@ -84,7 +79,7 @@ const CreateStripeCardForm = ({ data, paymentModel }: StripeProps) => {
       setHasErrors(false);
       setLoading(false);
 
-      push(`/transactions/success?token=${newReference}`);
+      //push(`/transactions/success?token=${newReference}`);
     } catch (error: any) {
       setHasErrors(true);
       setLoading(false);
@@ -222,7 +217,6 @@ const CreateStripeCardForm = ({ data, paymentModel }: StripeProps) => {
               className="w-full"
               size="lg"
               variant="info"
-              disabled={!stripe}
               loading={loading}
             >
               Continue

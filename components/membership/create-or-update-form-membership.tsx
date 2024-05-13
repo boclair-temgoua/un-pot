@@ -119,7 +119,7 @@ const CreateOrUpdateFormMembership = ({
         <div className="mt-8 overflow-hidden rounded-lg border border-gray-200 bg-white dark:border-gray-800 dark:bg-[#121212]">
           <div className="px-4 py-5">
             <h2 className="text-base font-bold text-black dark:text-white">
-              Create a new membership
+              {membership ? 'Update' : 'Create'} a new membership
             </h2>
 
             <div className="mt-2">

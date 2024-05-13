@@ -263,6 +263,7 @@ export const getPostsAPI = async (
   payload: {
     albumId?: string;
     userVisitorId?: string;
+    organizationVisitorId?: string;
     type?: PostType;
     status?: string;
     typeIds?: string[];
@@ -276,7 +277,8 @@ export const getPostsAPI = async (
 
 export const GetInfinitePostsAPI = (payload: {
   albumId?: string;
-  userVisitor: UserVisitorModel;
+  userVisitor?: UserVisitorModel;
+  organizationId: string;
   take: number;
   status?: string;
   sort: SortModel;
@@ -284,15 +286,25 @@ export const GetInfinitePostsAPI = (payload: {
   typeIds?: PostType[];
   search?: string;
 }) => {
-  const { userVisitor, albumId, take, sort, status, type, typeIds, search } =
-    payload;
+  const {
+    userVisitor,
+    organizationId,
+    albumId,
+    take,
+    sort,
+    status,
+    type,
+    typeIds,
+    search,
+  } = payload;
   return useInfiniteQuery({
     queryKey: ['posts', 'infinite', { ...payload }],
     getNextPageParam: (lastPage: any) => lastPage.data.next_page,
     queryFn: async ({ pageParam = 1 }) =>
       await getPostsAPI({
+        organizationId,
         userVisitorId: userVisitor?.id,
-        organizationId: userVisitor?.organizationId,
+        organizationVisitorId: userVisitor?.organizationId,
         take,
         sort,
         type,

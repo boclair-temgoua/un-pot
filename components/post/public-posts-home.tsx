@@ -10,11 +10,12 @@ import { ErrorFile } from '../ui-setting/ant/error-file';
 import { ListFollowPosts } from './list-follow-posts';
 
 type Props = {
+  organizationId: string;
   userVisitor: UserVisitorModel;
   typeIds: PostType[];
 };
 
-const PublicPostsHome = ({ typeIds, userVisitor }: Props) => {
+const PublicPostsHome = ({ organizationId, typeIds, userVisitor }: Props) => {
   const numberTake = 3;
   const {
     isLoading: isLoadingPosts,
@@ -29,6 +30,7 @@ const PublicPostsHome = ({ typeIds, userVisitor }: Props) => {
     userVisitor,
     status: 'ACTIVE',
     typeIds: typeIds,
+    organizationId,
   });
 
   const dataTablePosts = isLoadingPosts ? (

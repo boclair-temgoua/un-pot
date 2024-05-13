@@ -26,7 +26,7 @@ const ListLastPosts = ({ item }: Props) => {
                 folder="posts"
                 preview={false}
                 height={65}
-                className={`size-16 object-cover${
+                className={`size-10 object-cover ${
                   item?.whoCanSee === 'MEMBERSHIP' &&
                   item?.isValidSubscribe !== 1
                     ? 'blur-xl'

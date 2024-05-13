@@ -4,7 +4,6 @@ import { ListGallery } from '@/components/gallery/list-gallery';
 import { ButtonInput, ButtonLoadMore } from '@/components/ui-setting';
 import { EmptyData } from '@/components/ui-setting/ant/empty-data';
 import { LoadingFile } from '@/components/ui-setting/ant/loading-file';
-import { UserVisitorModel } from '@/types/user.type';
 import { queyParamsFunc } from '@/utils/generate-random';
 import { ImageIcon, PlusIcon } from 'lucide-react';
 import { useRouter } from 'next/router';
@@ -16,10 +15,10 @@ import { ErrorFile } from '../ui-setting/ant/error-file';
 
 type Props = {
   albumId?: string;
-  userVisitor: UserVisitorModel;
+  organizationId: string;
 };
 
-export const TableGallery = ({ userVisitor, albumId }: Props) => {
+export const TableGallery = ({ organizationId, albumId }: Props) => {
   const { push, back } = useRouter();
   const { ref, inView } = useInView();
   const { search, handleSetSearch } = useInputState();
@@ -35,10 +34,10 @@ export const TableGallery = ({ userVisitor, albumId }: Props) => {
   } = GetInfinitePostsAPI({
     search,
     albumId,
-    userVisitor,
     take: 10,
     sort: 'DESC',
     typeIds: ['GALLERY'],
+    organizationId,
   });
 
   useEffect(() => {

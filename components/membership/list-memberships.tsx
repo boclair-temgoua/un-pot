@@ -117,7 +117,7 @@ const ListMemberships = ({ item, index }: Props) => {
 
         <div className="py-4 text-right text-sm font-medium text-gray-900">
           <ButtonInput
-            variant="ghost"
+            variant="link"
             type="button"
             size="icon"
             icon={
@@ -135,7 +135,7 @@ const ListMemberships = ({ item, index }: Props) => {
             description="Are you sure you want to delete this?"
             buttonDialog={
               <ButtonInput
-                variant="ghost"
+                variant="link"
                 type="button"
                 size="icon"
                 icon={

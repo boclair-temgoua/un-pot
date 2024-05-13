@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { GetInfiniteAlbumsAPI } from '@/api-site/album';
 import { AlbumModel } from '@/types/album';
-import { UserVisitorModel } from '@/types/user.type';
 import { capitalizeOneFirstLetter } from '@/utils/utils';
 import { Avatar } from 'antd';
 import Link from 'next/link';
@@ -12,10 +11,10 @@ import { ErrorFile } from '../ui-setting/ant/error-file';
 import { Skeleton } from '../ui/skeleton';
 
 type Props = {
-  userVisitor: UserVisitorModel;
+  organizationId: string;
 };
 
-export const TableAlbum = ({ userVisitor }: Props) => {
+export const TableAlbum = ({ organizationId }: Props) => {
   const { push, back } = useRouter();
   const { ref, inView } = useInView();
 
@@ -26,7 +25,7 @@ export const TableAlbum = ({ userVisitor }: Props) => {
     isFetchingNextPage,
     hasNextPage,
   } = GetInfiniteAlbumsAPI({
-    organizationId: userVisitor?.organizationId,
+    organizationId,
     take: 10,
     sort: 'DESC',
     isPaginate: 'TRUE',

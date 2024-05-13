@@ -125,6 +125,7 @@ const HorizontalNavSite = ({ user, showDrawer }: Props) => {
                   );
                 })}
               </nav>
+              {/* <LangToggle /> */}
               <div className="relative">
                 <ButtonInput
                   type="button"

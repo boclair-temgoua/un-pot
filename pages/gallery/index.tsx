@@ -16,12 +16,12 @@ const Gallery = () => {
 
             <div className="mt-4 grid grid-cols-1 gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-8 xl:grid-cols-4 xl:gap-12">
               {organizationId ? (
-                <TableAlbum userVisitor={{ id: user?.id, organizationId }} />
+                <TableAlbum organizationId={organizationId} />
               ) : null}
             </div>
 
             <div className="flow-root">
-              <TableGallery userVisitor={{ id: user?.id, organizationId }} />
+              <TableGallery organizationId={organizationId} />
             </div>
           </div>
         </div>

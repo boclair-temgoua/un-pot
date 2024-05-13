@@ -18,7 +18,7 @@ const Albums = () => {
               {organizationId && albumId ? (
                 <TableGallery
                   albumId={albumId}
-                  userVisitor={{ id: user?.id, organizationId }}
+                  organizationId={organizationId}
                 />
               ) : null}
             </div>

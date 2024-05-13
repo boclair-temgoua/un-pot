@@ -24,10 +24,7 @@ const Posts = () => {
     hasNextPage,
     fetchNextPage,
   } = GetInfinitePostsAPI({
-    userVisitor: {
-      id: user?.id,
-      organizationId: user?.organizationId,
-    },
+    organizationId: user?.organizationId,
     take: 6,
     sort: 'DESC',
     typeIds: ['ARTICLE', 'AUDIO', 'VIDEO'],

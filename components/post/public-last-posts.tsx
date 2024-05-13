@@ -8,8 +8,10 @@ import { Skeleton } from '../ui/skeleton';
 import { ListLastPosts } from './list-last-posts';
 
 export const PublicLastPosts = ({
+  organizationId,
   userVisitor,
 }: {
+  organizationId: string;
   userVisitor: UserVisitorModel;
 }) => {
   const takeNumber = 4;
@@ -25,7 +27,7 @@ export const PublicLastPosts = ({
     sort: 'DESC',
     userVisitor,
     status: 'ACTIVE',
-    typeIds: ['ARTICLE', 'AUDIO', 'VIDEO', 'GALLERY'],
+    organizationId,
   });
 
   const dataTablePosts = isLoadingPosts ? (
@@ -61,7 +63,7 @@ export const PublicLastPosts = ({
   return (
     <>
       <div className="px-4 py-6 sm:p-6 lg:p-8">
-        {userVisitor?.organizationId && (
+        {organizationId && (
           <h3 className="font-bold dark:text-white">Latest Posts</h3>
         )}
         {dataTablePosts}
