@@ -1,6 +1,6 @@
 import { TableAffiliations } from '@/components/affiliation/table-affiliations';
 import { useInputState } from '@/components/hooks';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { ButtonInput } from '@/components/ui-setting';
 import { PrivateComponent } from '@/components/util/private-component';
 import { MoveLeft } from 'lucide-react';

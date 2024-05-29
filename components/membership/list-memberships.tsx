@@ -69,7 +69,8 @@ const ListMemberships = ({ item, index }: Props) => {
             size={100}
             shape="square"
             src={viewOneFileUploadAPI({
-              folder: 'memberships',
+              folder: 'membership',
+              token: String(dataImages?.[0]?.token),
               fileName: String(dataImages?.[0]?.path),
             })}
             alt={item?.title}
@@ -102,10 +103,10 @@ const ListMemberships = ({ item, index }: Props) => {
                 </button>
                 <span className="ml-1.5 text-sm font-bold">
                   {formatePrice({
+                    currency: item?.currency?.code,
                     value: Number(item?.price),
                     isDivide: false,
-                  })}{' '}
-                  {item?.currency?.symbol}
+                  })}
                 </span>
                 <span className="ml-1.5 text-sm font-bold">
                   / {convertToPluralMonth(Number(item?.month))}

@@ -1,6 +1,6 @@
 import { GetStatisticsTransactionsAPI } from '@/api-site/transaction';
 import { HorizontalNavDonation } from '@/components/donation/horizontal-nav-donation';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { TableTransactions } from '@/components/transaction/table-transactions';
 import { SerialPrice } from '@/components/ui-setting/serial-price';
 // import {

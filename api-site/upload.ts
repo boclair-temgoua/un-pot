@@ -21,15 +21,28 @@ export const GetUploadsAPI = (payload: {
   return { data: data?.data, isError, isLoading, status, isPending, refetch };
 };
 
+// export const viewOneFileUploadAPI = ({
+//   fileName,
+//   folder,
+// }: {
+//   fileName: string;
+//   folder: UploadFolderType;
+// }) =>
+//   fileName
+//     ? `${process.env.NEXT_PUBLIC_AWS_CLOUD_FRONT_URL}/${folder}/${fileName}`
+//     : null;
+
 export const viewOneFileUploadAPI = ({
   fileName,
   folder,
+  token,
 }: {
+  token: string;
   fileName: string;
   folder: UploadFolderType;
 }) =>
   fileName
-    ? `${process.env.NEXT_PUBLIC_AWS_CLOUD_FRONT_URL}/${folder}/${fileName}`
+    ? `${process.env.NEXT_PUBLIC_HOST_SERVER}/uploads/${folder}/${fileName}?token=${token}`
     : null;
 
 export const downloadOneFileUploadAPI = ({

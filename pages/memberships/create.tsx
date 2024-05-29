@@ -1,4 +1,4 @@
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { CreateOrUpdateFormMembership } from '@/components/membership/create-or-update-form-membership';
 import { PrivateComponent } from '@/components/util/private-component';
 

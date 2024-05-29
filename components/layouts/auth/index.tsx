@@ -1,14 +1,18 @@
+import { useCanonicalUrl } from '@/components/hooks';
 import Head from 'next/head';
 import { useRouter } from 'next/navigation';
-import { ButtonInput } from '../ui-setting';
+import { ButtonInput } from '../../ui-setting';
 
 interface IProps {
   title: string;
+  metas: React.ReactNode;
   children: React.ReactNode;
 }
 
-const LayoutAuth = ({ children, title }: IProps) => {
+const LayoutAuth = ({ children, title, metas }: IProps) => {
   const { push } = useRouter();
+
+  const canonicalUrl = useCanonicalUrl();
 
   return (
     <>
@@ -21,10 +25,10 @@ const LayoutAuth = ({ children, title }: IProps) => {
           content={process.env.NEXT_PUBLIC_NAME_SITE}
           key="title"
         />
-        <meta
-          name="description"
-          content="Un Pot is the best way for creators and artists to accept support and membership from their fans."
-        />
+        {metas}
+        {process.env.NEXT_ENV === 'prod' && (
+          <link rel="canonical" href={canonicalUrl} />
+        )}
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 

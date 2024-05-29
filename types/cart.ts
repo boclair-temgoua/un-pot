@@ -46,6 +46,7 @@ export type OneCartModel = {
 
 export type CartModel = {
   summary: {
+    currency: string;
     totalQuantity: number;
     totalPriceDiscount: number;
   };

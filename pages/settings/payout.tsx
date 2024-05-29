@@ -1,5 +1,5 @@
 import { useInputState } from '@/components/hooks';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { HorizontalNavSetting } from '@/components/setting/horizontal-nav-setting';
 import { PayoutFormUser } from '@/components/user/payout-form-user';
 import { PrivateComponent } from '@/components/util/private-component';

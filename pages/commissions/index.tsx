@@ -2,7 +2,7 @@ import { EnableCommission } from '@/components/commission/enable-commission';
 import { HorizontalNavCommission } from '@/components/commission/horizontal-nav-commission';
 import { TableCommissions } from '@/components/commission/table-commissions';
 import { useInputState } from '@/components/hooks';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { PrivateComponent } from '@/components/util/private-component';
 
 const Commissions = () => {

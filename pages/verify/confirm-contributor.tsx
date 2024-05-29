@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { VerifyTokenUsersAPI } from '@/api-site/user';
 import { ConfirmProfileContributor } from '@/components/contributor/confirm-profile-contributor';
-import { LayoutAuth } from '@/components/layout-auth';
+import { LayoutAuth } from '@/components/layouts/auth';
 import { ButtonInput } from '@/components/ui-setting';
 import { LoadingFile } from '@/components/ui-setting/ant';
 import { ErrorFile } from '@/components/ui-setting/ant/error-file';
@@ -16,7 +16,15 @@ const ConfirmContributor = () => {
 
   return (
     <>
-      <LayoutAuth title="Confirm your account">
+      <LayoutAuth
+        metas={
+          <meta
+            name="description"
+            content="Un Pot is the best way for creators and artists to accept support and membership from their fans."
+          />
+        }
+        title="Confirm your account"
+      >
         <div className="m-auto mt-10 w-full max-w-xl rounded-lg p-6 shadow-md dark:bg-black md:mt-16">
           {verify?.user && <ConfirmProfileContributor verify={verify} />}
           {status === 'error' ? (

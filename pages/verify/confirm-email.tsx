@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { resendCodeAPI, validCodeAPI } from '@/api-site/user';
 import { useDecrementTimer, useReactHookForm } from '@/components/hooks';
-import { LayoutAuth } from '@/components/layout-auth';
+import { LayoutAuth } from '@/components/layouts/auth';
 import { ButtonInput } from '@/components/ui-setting';
 import { TextInput } from '@/components/ui-setting/shadcn';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -80,7 +80,15 @@ const ConfirmEmail = () => {
   };
   return (
     <>
-      <LayoutAuth title="Confirm your account">
+      <LayoutAuth
+        metas={
+          <meta
+            name="description"
+            content="Un Pot is the best way for creators and artists to accept support and membership from their fans."
+          />
+        }
+        title="Confirm your account"
+      >
         <div className="m-auto mt-8 w-full max-w-sm rounded-lg p-6 shadow-md dark:bg-black md:mt-16">
           <div className="mx-auto flex justify-center">
             <img

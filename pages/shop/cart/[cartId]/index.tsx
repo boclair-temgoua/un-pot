@@ -3,7 +3,7 @@
 import { GetOneProductAPI } from '@/api-site/product';
 import { GetAllCountiesAPI } from '@/api-site/profile';
 import { GetUploadsAPI } from '@/api-site/upload';
-import { LayoutSite } from '@/components/layout-site';
+import { LayoutSite } from '@/components/layouts/site';
 import { ListCarouselUpload } from '@/components/shop/list-carousel-upload';
 import { LoadingFile } from '@/components/ui-setting/ant';
 import { SelectSearchInput } from '@/components/ui-setting/ant/select-search-input';

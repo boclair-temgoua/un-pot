@@ -5,6 +5,7 @@ import {
   AlertSuccessNotification,
 } from '@/utils/alert-notification';
 import { Alert } from 'antd';
+import { MoveLeftIcon } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { SubmitHandler } from 'react-hook-form';
@@ -88,7 +89,19 @@ const CreateOrUpdateFormAlbumPost: React.FC<Props> = ({ album, refetch }) => {
 
   return (
     <>
-      <div className="mt-4 lg:order-1 lg:col-span-3 xl:col-span-4">
+      <ButtonInput
+        type="button"
+        size="sm"
+        variant="ghost"
+        onClick={() => {
+          back();
+        }}
+        icon={<MoveLeftIcon className="size-4" />}
+      >
+        Come back
+      </ButtonInput>
+
+      <div className="mt-2 lg:order-1 lg:col-span-3 xl:col-span-4">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flow-root">
             <div
@@ -129,15 +142,6 @@ const CreateOrUpdateFormAlbumPost: React.FC<Props> = ({ album, refetch }) => {
                   </div>
 
                   <div className="my-4 flex items-center space-x-4">
-                    <ButtonInput
-                      type="button"
-                      className="w-full"
-                      size="lg"
-                      variant="outline"
-                      onClick={() => back()}
-                    >
-                      Cancel
-                    </ButtonInput>
                     <ButtonInput
                       type="submit"
                       className="w-full"

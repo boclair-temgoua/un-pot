@@ -1,10 +1,10 @@
 import { UserModel } from '@/types/user.type';
 import Head from 'next/head';
-import { useAuth } from '../util/context-user';
+import { useAuth } from '../../util/context-user';
 import { HorizontalNavUserPublicSite } from './horizontal-nav-user-public-site';
 
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { useInputState } from '../hooks';
+import { useInputState } from '../../hooks';
 import { VerticalNavUserPublicSite } from './vertical-nav-user-public-site';
 interface IProps {
   user: UserModel;

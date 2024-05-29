@@ -1,7 +1,7 @@
 import { GetOnePostAPI } from '@/api-site/post';
 import { GetOneUserPublicAPI } from '@/api-site/user';
 import { useInputState } from '@/components/hooks';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { ListFollowPosts } from '@/components/post/list-follow-posts';
 import { PublicLastPosts } from '@/components/post/public-last-posts';
 import { PostSkeleton } from '@/components/skeleton/post-skeleton';

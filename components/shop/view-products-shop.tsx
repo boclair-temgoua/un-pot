@@ -3,15 +3,18 @@ import { HtmlParser } from '@/utils/html-parser';
 import { useRouter } from 'next/router';
 import 'react-h5-audio-player/lib/styles.css';
 import { ButtonInput, CopyShareLink } from '../ui-setting';
-import { ListCarouselUpload } from './list-carousel-upload';
 
 import { CreateOrUpdateOneCartAPI } from '@/api-site/cart';
 import { ProductModel } from '@/types/product';
-import { AlertDangerNotification, AlertSuccessNotification } from '@/utils';
-import { MessageCircleIcon, ShareIcon, ShoppingCartIcon } from 'lucide-react';
+import {
+  AlertDangerNotification,
+  AlertSuccessNotification,
+  formatePrice,
+} from '@/utils';
+import { LockKeyholeIcon, ShareIcon } from 'lucide-react';
 import ReactPlayer from 'react-player';
-import { ListComments } from '../comment/list-comments';
 import { useInputState } from '../hooks';
+import { ListCarouselProductUpload } from './list-carousel-product-upload';
 
 type Props = {
   item: ProductModel;
@@ -29,6 +32,7 @@ const ViewProductsShop = ({ item }: Props) => {
 
   const addToCart = async (itemCard: any) => {
     try {
+      setLoading(true);
       if (userStorage?.id) {
         await saveMutation({
           quantity: 1,
@@ -38,10 +42,13 @@ const ViewProductsShop = ({ item }: Props) => {
         AlertSuccessNotification({
           text: `Product add to cart successfully`,
         });
+
+        setLoading(false);
       } else {
         push(`/login${pathname ? `?redirect=${linkHref}` : ''}`);
       }
     } catch (error: any) {
+      setLoading(false);
       AlertDangerNotification({
         text: `${error.response.data.message}`,
       });
@@ -57,50 +64,90 @@ const ViewProductsShop = ({ item }: Props) => {
         <div className="p-8 sm:px-8 sm:py-7">
           {item?.uploadsImages?.length > 0 ? (
             <div className="group relative mx-auto mt-2 justify-center text-center">
-              <ListCarouselUpload
+              {/* <ListCarouselUpload
                 uploads={item?.uploadsImages}
-                folder="products"
+                folder="product"
                 height={400}
                 className={`object-cover`}
+              /> */}
+
+              <ListCarouselProductUpload
+                product={item}
+                uploads={item?.uploadsImages}
+                folder="product"
+                height={400}
+                className={`object-cover blur-3xl transition-all duration-200 group-hover:scale-110`}
+                // className={`object-cover ${
+                //   item?.whoCanSee === 'MEMBERSHIP' &&
+                //   item?.isValidSubscribe !== 1
+                //     ? 'blur-xl'
+                //     : ''
+                // }`}
               />
             </div>
           ) : null}
 
+          <div className="mx-auto mt-4 justify-center text-center">
+            <ButtonInput
+              type="button"
+              variant="primary"
+              className="w-[200px]"
+              onClick={() => {
+                addToCart(item);
+              }}
+              loading={loading}
+              icon={<LockKeyholeIcon className="mr-2 size-6" />}
+            >
+              Unlock media
+            </ButtonInput>
+          </div>
+
           {item?.title ? (
-            <div className="mt-2 text-2xl font-bold">{item?.title ?? ''}</div>
+            <div className="mt-2 text-xl font-bold">{item?.title ?? ''}</div>
           ) : null}
 
           <div className="relative mt-4 shrink-0 cursor-pointer">
             <div className="flex items-center">
               <div className="flex shrink-0 items-center font-bold">
-                <p className="text-3xl">{item?.currency?.symbol ?? ''}</p>
-                <p className="ml-1 text-3xl">{item?.priceDiscount ?? ''}</p>
+                <p className="text-2xl">
+                  {formatePrice({
+                    currency: `${item?.currency?.code}`,
+                    value: Number(item?.priceDiscount ?? 0),
+                    isDivide: false,
+                  })}
+                </p>
 
                 {item?.enableDiscount ? (
                   <>
                     <p className="ml-2 text-xl text-red-500">
-                      <del> {item?.price ?? ''} </del>
-                    </p>
-                    <p className="ml-1 text-xl text-red-500">
-                      <del> {item?.currency?.symbol ?? ''} </del>
+                      <del>
+                        {formatePrice({
+                          currency: `${item?.currency?.code}`,
+                          value: Number(item?.price ?? 0),
+                          isDivide: false,
+                        })}
+                        {item?.price ?? ''}
+                      </del>
                     </p>
                   </>
                 ) : null}
               </div>
 
               <div className="ml-auto">
-                <ButtonInput
-                  type="button"
-                  className="w-full"
-                  size="lg"
-                  variant="info"
-                  onClick={() => {
-                    addToCart(item);
-                  }}
-                  icon={<ShoppingCartIcon className="mr-2 size-6" />}
-                >
-                  Get this
-                </ButtonInput>
+                <CopyShareLink
+                  isOpen={isOpen}
+                  setIsOpen={setIsOpen}
+                  link={`${process.env.NEXT_PUBLIC_SITE}/shop/${item?.slug}`}
+                  buttonDialog={
+                    <ButtonInput
+                      className="ml-1.5 text-gray-600 hover:text-gray-400 focus:ring-gray-900"
+                      variant="ghost"
+                      size="icon"
+                      type="button"
+                      icon={<ShareIcon className="size-6" />}
+                    />
+                  }
+                />
               </div>
             </div>
           </div>
@@ -127,36 +174,18 @@ const ViewProductsShop = ({ item }: Props) => {
             </div>
           ) : null}
 
-          <div className="mt-2 flex items-center font-medium text-gray-600">
-            <MessageCircleIcon className="size-5" />
-            <span className="ml-2 text-sm">
-              {item?.totalComment > 0 ? item?.totalComment : ''}
-            </span>
+          {/* <div className="mt-2 flex items-center font-medium text-gray-600">
+         
+          </div> */}
 
-            <CopyShareLink
-              isOpen={isOpen}
-              setIsOpen={setIsOpen}
-              link={`${process.env.NEXT_PUBLIC_SITE}/shop/${item?.slug}`}
-              buttonDialog={
-                <ButtonInput
-                  className="text-gray-600 hover:text-gray-400 focus:ring-gray-900"
-                  variant="link"
-                  type="button"
-                >
-                  <ShareIcon className="size-5" />
-                </ButtonInput>
-              }
-            />
-          </div>
-
-          <ListComments
+          {/* <ListComments
             model="PRODUCT"
             modelIds={['PRODUCT']}
             take={6}
             userVisitorId={userStorage?.id}
             organizationId={item?.organizationId}
             productId={item?.id}
-          />
+          /> */}
         </div>
       </div>
     </>

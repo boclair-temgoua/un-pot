@@ -42,24 +42,6 @@ export const TableTransactions = ({ model, organizationId, days }: Props) => {
     }
   }, [inView, fetchNextPage, hasNextPage]);
 
-  const dataTableTransactions = isLoadingTransaction ? (
-    <LoadingFile />
-  ) : isErrorTransaction ? (
-    <ErrorFile title="404" description="Error find data please try again..." />
-  ) : Number(dataTransaction?.pages[0]?.data?.total) <= 0 ? (
-    <EmptyData
-      image={<ArrowRightLeftIcon className="size-10" />}
-      title="You don't have any transaction"
-      description={`Share your page with your audience to get started.`}
-    />
-  ) : (
-    dataTransaction?.pages
-      .flatMap((page: any) => page?.data?.value)
-      .map((item, index) => (
-        <ListTransactions item={item} key={index} index={index} />
-      ))
-  );
-
   return (
     <>
       <div className="mt-4 overflow-hidden rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-[#121212]">
@@ -79,7 +61,26 @@ export const TableTransactions = ({ model, organizationId, days }: Props) => {
 
         <table className="mt-4 min-w-full lg:divide-y">
           <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
-            {dataTableTransactions}
+            {isLoadingTransaction ? (
+              <LoadingFile />
+            ) : isErrorTransaction ? (
+              <ErrorFile
+                title="404"
+                description="Error find data please try again..."
+              />
+            ) : Number(dataTransaction?.pages[0]?.data?.total) <= 0 ? (
+              <EmptyData
+                image={<ArrowRightLeftIcon className="size-10" />}
+                title="You don't have any transaction"
+                description={`Share your page with your audience to get started.`}
+              />
+            ) : (
+              dataTransaction?.pages
+                .flatMap((page: any) => page?.data?.value)
+                .map((item, index) => (
+                  <ListTransactions item={item} key={index} index={index} />
+                ))
+            )}
           </tbody>
         </table>
       </div>

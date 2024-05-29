@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React, { useState } from 'react';
-import { NavbarProps } from '../layout-dashboard/vertical-nav-dashboard';
-import { useAuth } from '../util/context-user';
+import { useState } from 'react';
+import { useInputState } from '../hooks';
+import { NavbarProps } from '../layouts/dashboard/vertical-nav-dashboard';
 
-const HorizontalNavShop: React.FC = () => {
-  const { profile } = useAuth() as any;
+const HorizontalNavShop = () => {
+  const { userStorage: user } = useInputState();
   const pathname = usePathname();
   const [navigation] = useState<NavbarProps[]>([
     {
@@ -26,7 +26,6 @@ const HorizontalNavShop: React.FC = () => {
     },
   ]);
 
-  const bgColor = `bg-${profile?.color}-600 text-white`;
   return (
     <>
       {/* <div className="rounded-lg border border-gray-200 bg-white px-3 py-2 dark:border-gray-800 dark:bg-[#121212]">
@@ -64,7 +63,7 @@ const HorizontalNavShop: React.FC = () => {
                 title={item.title}
                 className={`whitespace-nowrap border-b-2 py-4 text-sm font-medium transition-all duration-200 ${
                   isActive
-                    ? `text-${profile?.color}-600 border-${profile?.color}-600`
+                    ? `text-${user?.profile?.color}-600 border-${user?.profile?.color}-600`
                     : 'border-transparent hover:border-gray-300'
                 } `}
               >

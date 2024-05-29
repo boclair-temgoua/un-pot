@@ -2,7 +2,7 @@ import { GetOneCartOrderAPI } from '@/api-site/cart';
 import { GetOneUserPublicAPI } from '@/api-site/user';
 import { CartOrderFooterCart } from '@/components/cart/cart-order-footer-cart';
 import { useInputState } from '@/components/hooks';
-import { LayoutUserPublicSite } from '@/components/layout-user-public-site';
+import { LayoutUserPublicSite } from '@/components/layouts/user-public-site';
 import { PublicShop } from '@/components/shop/public-shop';
 import { LoadingFile } from '@/components/ui-setting/ant';
 import { ErrorFile } from '@/components/ui-setting/ant/error-file';

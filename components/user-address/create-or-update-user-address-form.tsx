@@ -1,12 +1,9 @@
 import { GetAllCountiesAPI } from '@/api-site/profile';
 import { CreateOrUpdateOneUserAddressAPI } from '@/api-site/user-address';
 import { UserAddressFormModel } from '@/types/user-address';
-import {
-  AlertDangerNotification,
-  AlertSuccessNotification,
-} from '@/utils/alert-notification';
+import { AlertDangerNotification } from '@/utils/alert-notification';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
 import { useReactHookForm } from '../hooks/use-react-hook-form';
@@ -16,6 +13,8 @@ import { TextInput } from '../ui-setting/shadcn';
 
 type Props = {
   userAddress?: any;
+  isEdit: boolean;
+  setIsEdit: any;
 };
 
 const schema = yup.object({
@@ -27,9 +26,12 @@ const schema = yup.object({
   cap: yup.string().required('cap is a required field'),
 });
 
-const CreateOrUpdateUserAddressForm = ({ userAddress }: Props) => {
+const CreateOrUpdateUserAddressForm = ({
+  userAddress,
+  setIsEdit,
+  isEdit,
+}: Props) => {
   const { back } = useRouter();
-  const [isEdit, setIsEdit] = useState(userAddress?.isUpdated);
   const {
     control,
     setValue,
@@ -83,9 +85,6 @@ const CreateOrUpdateUserAddressForm = ({ userAddress }: Props) => {
       });
       setHasErrors(false);
       setLoading(false);
-      AlertSuccessNotification({
-        text: `address save successfully`,
-      });
       setIsEdit((i: boolean) => !i);
     } catch (error: any) {
       setHasErrors(true);
@@ -99,155 +98,111 @@ const CreateOrUpdateUserAddressForm = ({ userAddress }: Props) => {
 
   return (
     <>
-      <div className="py-4">
-        <div className="flex items-center">
-          <h2 className="text-base font-bold text-gray-500">
-            Billing Information
-          </h2>
-          {userAddress?.isUpdated &&
-            userAddress?.street1 &&
-            userAddress?.city &&
-            userAddress?.country && (
-              <ButtonInput
-                type="button"
-                size="sm"
-                variant={isEdit ? 'info' : 'outline'}
-                onClick={() => setIsEdit((i: boolean) => !i)}
-                className="ml-auto"
-              >
-                {isEdit ? 'Edit address' : 'Cancel'}
-              </ButtonInput>
-            )}
+      {/* {!isEdit ? ( */}
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2">
+          <div className="mt-2">
+            <TextInput
+              label="First name"
+              control={control}
+              type="text"
+              name="firstName"
+              placeholder="First name"
+              errors={errors}
+              disabled={isEdit}
+            />
+          </div>
+
+          <div className="mt-2">
+            <TextInput
+              label="Last name"
+              control={control}
+              type="text"
+              name="lastName"
+              placeholder="Last name"
+              errors={errors}
+              disabled={isEdit}
+            />
+          </div>
         </div>
-      </div>
 
-      {!isEdit ? (
-        <div className="py-4">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            {/* <h2 className="text-base font-bold"> Profile </h2> */}
-
-            <div className="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2">
-              <div className="mt-2">
-                <TextInput
-                  label="First name"
-                  control={control}
-                  type="text"
-                  name="firstName"
-                  placeholder="First name"
-                  errors={errors}
-                  disabled={isEdit}
-                />
-              </div>
-
-              <div className="mt-2">
-                <TextInput
-                  label="Last name"
-                  control={control}
-                  type="text"
-                  name="lastName"
-                  placeholder="Last name"
-                  errors={errors}
-                  disabled={isEdit}
-                />
-              </div>
-            </div>
-
-            <div className="mt-2">
-              <SelectSearchInput
-                label="Counties"
-                firstOptionName="Country"
-                valueType="text"
-                control={control}
-                errors={errors}
-                placeholder="Country"
-                name="country"
-                dataItem={countries}
-              />
-            </div>
-
-            <div className="mt-2 grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2">
-              <div className="mt-2">
-                <TextInput
-                  label="City"
-                  control={control}
-                  type="text"
-                  name="city"
-                  placeholder="City"
-                  errors={errors}
-                  disabled={isEdit}
-                />
-              </div>
-
-              <div className="mt-2">
-                <TextInput
-                  label=" Postal code "
-                  control={control}
-                  type="text"
-                  name="cap"
-                  placeholder="Postal code "
-                  errors={errors}
-                  disabled={isEdit}
-                />
-              </div>
-            </div>
-
-            <div className="mt-2">
-              <TextInput
-                label="Phone"
-                control={control}
-                type="text"
-                name="phone"
-                placeholder="Phone"
-                errors={errors}
-                disabled={isEdit}
-              />
-            </div>
-            <div className="mt-2">
-              <TextInput
-                label="Address line 1"
-                control={control}
-                type="text"
-                name="street1"
-                placeholder="Address line 1"
-                errors={errors}
-                disabled={isEdit}
-              />
-            </div>
-
-            <div className="mt-2">
-              <TextInput
-                label="Address line 2"
-                control={control}
-                type="text"
-                name="street2"
-                placeholder="Address line 2"
-                errors={errors}
-                disabled={isEdit}
-              />
-            </div>
-            <div className="my-4 flex items-center space-x-4">
-              {/* <ButtonInput
-            type="button"
-            className="w-full"
-            size="lg"
-            variant="outline"
-            onClick={() => back()}
-          >
-            Cancel
-          </ButtonInput> */}
-              <ButtonInput
-                size="lg"
-                type="submit"
-                variant="info"
-                className="w-full"
-                loading={loading}
-              >
-                Update address
-              </ButtonInput>
-            </div>
-          </form>
+        <div className="mt-2">
+          <SelectSearchInput
+            label="Counties"
+            firstOptionName="Country"
+            valueType="text"
+            control={control}
+            errors={errors}
+            placeholder="Country"
+            name="country"
+            dataItem={countries}
+          />
         </div>
-      ) : null}
+
+        <div className="mt-2 grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2">
+          <div className="mt-2">
+            <TextInput
+              label="City"
+              control={control}
+              type="text"
+              name="city"
+              placeholder="City"
+              errors={errors}
+              disabled={isEdit}
+            />
+          </div>
+
+          <div className="mt-2">
+            <TextInput
+              label=" Postal code "
+              control={control}
+              type="text"
+              name="cap"
+              placeholder="Postal code "
+              errors={errors}
+              disabled={isEdit}
+            />
+          </div>
+        </div>
+
+        <div className="mt-2">
+          <TextInput
+            label="Phone"
+            control={control}
+            type="text"
+            name="phone"
+            placeholder="Phone"
+            errors={errors}
+            disabled={isEdit}
+          />
+        </div>
+        <div className="mt-2">
+          <TextInput
+            label="Address line 1"
+            control={control}
+            type="text"
+            name="street1"
+            placeholder="Address line 1"
+            errors={errors}
+            disabled={isEdit}
+          />
+        </div>
+
+        {!isEdit ? (
+          <div className="mt-4 flex items-center space-x-4">
+            <ButtonInput
+              size="lg"
+              type="submit"
+              variant="info"
+              className="w-full"
+              loading={loading}
+            >
+              Continue
+            </ButtonInput>
+          </div>
+        ) : null}
+      </form>
+      {/* ) : null} */}
     </>
   );
 };

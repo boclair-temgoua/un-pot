@@ -13,14 +13,14 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
-import { SelectDiscountSearchInput } from '../discount/select-discount-search-input';
-import { useUploadItem } from '../hooks';
-import { useReactHookForm } from '../hooks/use-react-hook-form';
-import { ButtonInput, ReactQuillInput } from '../ui-setting';
-import { SwitchInput } from '../ui-setting/ant';
-import { SelectInput, TextAreaInput, TextInput } from '../ui-setting/shadcn';
-import { Label } from '../ui/label';
-import { useAuth } from '../util/context-user';
+import { SelectDiscountSearchInput } from '../../discount/select-discount-search-input';
+import { useUploadItem } from '../../hooks';
+import { useReactHookForm } from '../../hooks/use-react-hook-form';
+import { ButtonInput, ReactQuillInput } from '../../ui-setting';
+import { SwitchInput } from '../../ui-setting/ant';
+import { SelectInput, TextAreaInput, TextInput } from '../../ui-setting/shadcn';
+import { Label } from '../../ui/label';
+import { useAuth } from '../../util/context-user';
 
 const { Dragger } = Upload;
 

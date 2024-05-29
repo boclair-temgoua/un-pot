@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { NavbarProps } from '../layout-dashboard/vertical-nav-dashboard';
-import { useRouter } from 'next/router';
 import { IconTypePost } from '@/utils/icon-type-post';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { NavbarProps } from '../layouts/dashboard/vertical-nav-dashboard';
 
 const classIcon = 'flex-shrink-0 w-8 h-8 text-gray-600 md:w-10 md:h-10';
 
-const HorizontalNavCreatePost: React.FC<{ user?: any }> = ({ user }) => {
+const HorizontalNavCreatePost = () => {
   const router = useRouter();
   const [navigation] = useState<NavbarProps[]>([
     {

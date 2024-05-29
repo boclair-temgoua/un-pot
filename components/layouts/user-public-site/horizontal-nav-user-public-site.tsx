@@ -1,9 +1,9 @@
 import { UserModel } from '@/types/user.type';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { CreateModalPublicDonation } from '../donation/create-modal-public-donation';
-import { NavbarProps } from '../layout-dashboard/vertical-nav-dashboard';
-import { useAuth } from '../util/context-user';
+import { CreateModalPublicDonation } from '../../donation/create-modal-public-donation';
+import { NavbarProps } from '../../layouts/dashboard/vertical-nav-dashboard';
+import { useAuth } from '../../util/context-user';
 
 import { logoutUsersAPI } from '@/api-site/user';
 import { Button } from '@/components/ui/button';
@@ -18,9 +18,9 @@ import {
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
-import { CreateOrUpdateFormFollow } from '../like-follow/create-or-update-form-follow';
-import { ThemeToggle } from '../ui-setting';
-import { HorizontalNavPublicUser } from '../user/horizontal-nav-public-user';
+import { CreateOrUpdateFormFollow } from '../../like-follow/create-or-update-form-follow';
+import { ThemeToggle } from '../../ui-setting';
+import { HorizontalNavPublicUser } from '../../user/horizontal-nav-public-user';
 
 interface Props {
   user?: UserModel;

@@ -50,13 +50,13 @@ export const ButtonInput = ({
           <>
             <LoadingOutlined
               style={{ fontSize: 20, color: '##1E90FF' }}
-              className="mr-2 size-4 animate-spin"
+              className="mr-1 size-4 animate-spin"
             />
             Please wait
           </>
         ) : (
           <>
-            <span className="mr-2">{icon}</span> {children}
+            <span className="mr-1">{icon}</span> {children}
           </>
         )}
       </Button>

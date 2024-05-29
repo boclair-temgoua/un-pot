@@ -100,7 +100,7 @@ export const ListFollowPosts = ({ item, commentTake, userVisitor }: Props) => {
                               onClick={() => {
                                 push(
                                   `${downloadOneFileUploadAPI({
-                                    folder: 'posts',
+                                    folder: 'post',
                                     fileName:
                                       item.type === 'AUDIO'
                                         ? item?.uploadsFiles[0]?.path
@@ -167,7 +167,7 @@ export const ListFollowPosts = ({ item, commentTake, userVisitor }: Props) => {
               <ListCarouselUpload
                 post={item}
                 uploads={item?.uploadsImages}
-                folder="posts"
+                folder="post"
                 height={400}
                 className={`object-cover ${
                   item?.whoCanSee === 'MEMBERSHIP' &&
@@ -209,7 +209,7 @@ export const ListFollowPosts = ({ item, commentTake, userVisitor }: Props) => {
           {item?.whoCanSee && ['AUDIO'].includes(item?.type as PostType) ? (
             <>
               <div className="mx-auto justify-center text-center">
-                <AudioPlayerInput item={item} folder="posts" />
+                <AudioPlayerInput item={item} folder="post" />
               </div>
             </>
           ) : null}

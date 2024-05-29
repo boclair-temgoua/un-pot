@@ -1,7 +1,7 @@
 import { GetOneUserPublicAPI } from '@/api-site/user';
 import { CreateFormPublicDonation } from '@/components/donation/create-form-public-donation';
 import { useInputState } from '@/components/hooks';
-import { LayoutUserPublicSite } from '@/components/layout-user-public-site';
+import { LayoutUserPublicSite } from '@/components/layouts/user-public-site';
 import { CreateConversationsModal } from '@/components/messages/create-conversations-modal';
 import { PublicPostsHome } from '@/components/post/public-posts-home';
 import { RecentCommentTransactions } from '@/components/transaction/recent-comment-transactions';

@@ -31,6 +31,7 @@ export const CreateOrUpdateOneProductAPI = ({
       let data = new FormData();
       data.append('title', `${payload.title ?? ''}`);
       data.append('price', `${payload.price ?? ''}`);
+      data.append('tab', `${payload.tab ?? 'OTHER'}`);
       data.append('enableVisibility', `${payload.enableVisibility ?? ''}`);
       data.append('model', `${payload.model ?? 'PRODUCT'}`);
       data.append('urlMedia', `${payload.urlMedia ?? ''}`);
@@ -147,9 +148,11 @@ export const GetOneProductAPI = (payload: {
   productId?: string;
   productSlug?: string;
   organizationId?: string;
+  buyerId?: string;
   enableVisibility?: 'TRUE' | 'FALSE';
 }) => {
-  const { productId, organizationId, enableVisibility, productSlug } = payload;
+  const { productId, organizationId, buyerId, enableVisibility, productSlug } =
+    payload;
   const { data, isError, isLoading, isPending, status, refetch } = useQuery({
     queryKey: ['product', { ...payload }],
     queryFn: async () =>
@@ -158,6 +161,7 @@ export const GetOneProductAPI = (payload: {
         queryParams: {
           productId,
           organizationId,
+          buyerId,
           enableVisibility,
           productSlug,
         },

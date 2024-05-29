@@ -1,17 +1,17 @@
 import { GetStatisticsTransactionsAPI } from '@/api-site/transaction';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { useInputState } from '@/components/hooks';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { HorizontalNavMembership } from '@/components/membership/horizontal-nav-membership';
 import { TableTransactions } from '@/components/transaction/table-transactions';
 import { ButtonInput } from '@/components/ui-setting';
 import { ErrorFile } from '@/components/ui-setting/ant/error-file';
 import { SerialPrice } from '@/components/ui-setting/serial-price';
-import { useAuth } from '@/components/util/context-user';
 import { PrivateComponent } from '@/components/util/private-component';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 const Memberships = () => {
-  const user = useAuth() as any;
+  const { userStorage: user, t } = useInputState() as any;
   const [dayCount, setDayCount] = useState(30);
   const router = useRouter();
 

@@ -1,6 +1,6 @@
 import { GetOnePostAPI } from '@/api-site/post';
 import { useInputState } from '@/components/hooks';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { CreateOrUpdateFormAudioPost } from '@/components/post/create-or-update-form-audio-post';
 import { CreateOrUpdateFormGalleryPost } from '@/components/post/create-or-update-form-gallery-post';
 import { CreateOrUpdateFormPost } from '@/components/post/create-or-update-form-post';

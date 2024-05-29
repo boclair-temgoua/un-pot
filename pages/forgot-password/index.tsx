@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useReactHookForm } from '@/components/hooks';
-import { LayoutAuth } from '@/components/layout-auth';
+import { LayoutAuth } from '@/components/layouts/auth';
 import { ButtonInput } from '@/components/ui-setting/button-input';
 import { TextInput } from '@/components/ui-setting/shadcn';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -69,7 +69,15 @@ const ForgotPassword = () => {
   };
 
   return (
-    <LayoutAuth title="Forgot password">
+    <LayoutAuth
+      metas={
+        <meta
+          name="description"
+          content="Un Pot is the best way for creators and artists to accept support and membership from their fans."
+        />
+      }
+      title="Forgot password"
+    >
       <div className="m-auto mt-10 w-full max-w-sm rounded-lg p-6 py-12 shadow-md dark:bg-black md:mt-16">
         <div className="mx-auto flex justify-center">
           <h6 className="mt-3 text-center text-xl font-bold">

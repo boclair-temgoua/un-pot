@@ -1,15 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { CreateOrUpdateOneCartAPI } from '@/api-site/cart';
-import { viewOneFileUploadAPI } from '@/api-site/upload';
 import { ProductModel } from '@/types/product';
-import { AlertDangerNotification } from '@/utils';
+import { AlertDangerNotification, formatePrice } from '@/utils';
 import { ReadMore } from '@/utils/read-more';
-import { Image } from 'antd';
 import { ShoppingCartIcon } from 'lucide-react';
 import Link from 'next/link';
 import { LoginModal } from '../auth/login-modal';
 import { useInputState } from '../hooks';
 import { ButtonInput } from '../ui-setting';
+import { ListCarouselProductUpload } from './list-carousel-product-upload';
 
 type Props = {
   item: ProductModel;
@@ -48,36 +47,45 @@ const ListPublicShop = ({ item }: Props) => {
     <>
       <div
         key={item?.id}
-        className="flex flex-col overflow-hidden rounded-lg bg-white shadow-xl transition-all duration-300 dark:bg-[#121212]"
+        className="flex flex-col overflow-hidden rounded-lg transition-all duration-300 hover:shadow-xl dark:bg-[#121212]"
       >
         {item?.uploadsImages?.length > 0 ? (
-          <Image
-            preview={false}
+          <ListCarouselProductUpload
+            product={item}
+            uploads={item?.uploadsImages}
+            folder="product"
             height={200}
             width="100%"
-            className="size-full object-cover transition-all duration-300 group-hover:scale-125"
-            src={
-              viewOneFileUploadAPI({
-                folder: 'products',
-                fileName: String(item?.uploadsImages?.[0]?.path),
-              }) as string
-            }
-            alt={item?.title}
+            className={`object-cover blur-xl transition-all duration-200 group-hover:scale-110`}
+            // className={`object-cover ${
+            //   item?.whoCanSee === 'MEMBERSHIP' &&
+            //   item?.isValidSubscribe !== 1
+            //     ? 'blur-xl'
+            //     : ''
+            // }`}
           />
         ) : null}
 
         <div className="flex flex-1 flex-col p-3">
           <div className="flex shrink-0 items-center font-bold">
-            <p className="text-3xl">{item?.priceDiscount ?? ''}</p>
-            <p className="ml-1 text-lg">{item?.currency?.symbol ?? ''}</p>
+            <p className="text-xl">
+              {formatePrice({
+                currency: `${item?.currency?.code}`,
+                value: Number(item?.priceDiscount ?? 0),
+                isDivide: false,
+              })}
+            </p>
 
             {item?.enableDiscount ? (
               <>
                 <p className="ml-2 text-lg text-red-500">
-                  <del> {item?.price ?? ''} </del>
-                </p>
-                <p className="ml-1 text-lg text-red-500">
-                  <del> {item?.currency?.symbol ?? ''} </del>
+                  <del>
+                    {formatePrice({
+                      currency: `${item?.currency?.code}`,
+                      value: Number(item?.price ?? 0),
+                      isDivide: false,
+                    })}{' '}
+                  </del>
                 </p>
               </>
             ) : null}
@@ -97,10 +105,10 @@ const ListPublicShop = ({ item }: Props) => {
                 onClick={() => {
                   addToCart(item);
                 }}
-                variant="ghost"
+                variant="link"
                 className="text-gray-700 dark:bg-[#121212]"
               >
-                <ShoppingCartIcon className="size-8 dark:bg-[#121212]" />
+                <ShoppingCartIcon className="size-8 hover:text-indigo-600" />
               </ButtonInput>
             </div>
           </div>

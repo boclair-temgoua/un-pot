@@ -1,7 +1,7 @@
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Head from 'next/head';
-import { useInputState } from '../hooks';
-import { useAuth } from '../util/context-user';
+import { useInputState } from '../../hooks';
+import { useAuth } from '../../util/context-user';
 import { HorizontalNavDashboard } from './horizontal-nav-dashboard';
 import { VerticalNavDashboard } from './vertical-nav-dashboard';
 

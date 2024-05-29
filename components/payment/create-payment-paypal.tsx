@@ -10,6 +10,7 @@ type Props = { data?: any; paymentModel: PaymentModel };
 const CreatePaymentPayPal = ({ data, paymentModel }: Props) => {
   const { push } = useRouter();
   const {
+    productId,
     userAddress,
     amount,
     affiliate,
@@ -40,12 +41,11 @@ const CreatePaymentPayPal = ({ data, paymentModel }: Props) => {
     const amountPalpal = order?.purchase_units[0]?.amount;
     setHasErrors(false);
     const payload = {
+      productId,
       affiliate,
       userAddress,
       cartOrderId,
       membershipId,
-      userBuyerId,
-      userReceiveId,
       organizationSellerId,
       organizationBuyerId,
       reference: newReference,
@@ -123,7 +123,7 @@ const CreatePaymentPayPal = ({ data, paymentModel }: Props) => {
                 height: 45,
                 layout: 'vertical',
                 label: 'paypal',
-                color: 'blue',
+                color: 'gold',
               }}
               forceReRender={[Number(amount?.value), currency]}
               fundingSource="paypal"

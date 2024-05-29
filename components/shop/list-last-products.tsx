@@ -20,7 +20,7 @@ export function ListLastProducts(props: Props) {
             <div className="size-16 rounded-lg object-cover">
               <ListCarouselUpload
                 uploads={item?.uploadsImages}
-                folder="products"
+                folder="product"
                 preview={false}
                 height={65}
                 className={`size-16`}

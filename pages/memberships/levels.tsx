@@ -1,6 +1,7 @@
 import { GetInfiniteMembershipsAPI } from '@/api-site/membership';
+import { useReactIntersectionObserver } from '@/components/hooks';
 import { useInputState } from '@/components/hooks/use-input-state';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { HorizontalNavMembership } from '@/components/membership/horizontal-nav-membership';
 import { ListMemberships } from '@/components/membership/list-memberships';
 import {
@@ -10,18 +11,13 @@ import {
 } from '@/components/ui-setting';
 import { EmptyData, LoadingFile } from '@/components/ui-setting/ant';
 import { ErrorFile } from '@/components/ui-setting/ant/error-file';
-import { useAuth } from '@/components/util/context-user';
 import { PrivateComponent } from '@/components/util/private-component';
 import { LockKeyholeIcon, PlusIcon } from 'lucide-react';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
 
 const MembershipsLevels = () => {
-  const { userStorage: user } = useAuth() as any;
-  const router = useRouter();
-  const { ref, inView } = useInView();
-  const { search, handleSetSearch } = useInputState();
+  const { push } = useRouter();
+  const { search, handleSetSearch, userStorage: user } = useInputState();
 
   const {
     isLoading: isLoadingMembership,
@@ -36,46 +32,7 @@ const MembershipsLevels = () => {
     sort: 'DESC',
     search,
   });
-
-  useEffect(() => {
-    let fetching = false;
-    if (inView) {
-      fetchNextPage();
-    }
-    const onScroll = async (event: any) => {
-      const { scrollHeight, scrollTop, clientHeight } =
-        event.target.scrollingElement;
-
-      if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.5) {
-        fetching = true;
-        if (hasNextPage) await fetchNextPage();
-        fetching = false;
-      }
-    };
-
-    document.addEventListener('scroll', onScroll);
-    return () => {
-      document.removeEventListener('scroll', onScroll);
-    };
-  }, [fetchNextPage, hasNextPage, inView]);
-
-  const dataTableMemberships = isLoadingMembership ? (
-    <LoadingFile />
-  ) : isErrorMembership ? (
-    <ErrorFile title="404" description="Error find data please try again..." />
-  ) : Number(dataGallery?.pages[0]?.data?.total) <= 0 ? (
-    <EmptyData
-      image={<LockKeyholeIcon className="size-10" />}
-      title="Add your first listing to get started"
-      description={`Your listing will appear on your page and be available for supporters to book. You can edit them anytime.`}
-    />
-  ) : (
-    dataGallery?.pages
-      .flatMap((page: any) => page?.data?.value)
-      .map((item, index) => (
-        <ListMemberships item={item} key={index} index={index} />
-      ))
-  );
+  const { ref } = useReactIntersectionObserver({ hasNextPage, fetchNextPage });
 
   return (
     <>
@@ -94,7 +51,7 @@ const MembershipsLevels = () => {
                         className="w-full"
                         size="sm"
                         variant="info"
-                        onClick={() => router.push(`${`/memberships/create`}`)}
+                        onClick={() => push(`${`/memberships/create`}`)}
                         icon={<PlusIcon className="size-4" />}
                       >
                         Create level
@@ -109,7 +66,30 @@ const MembershipsLevels = () => {
                   </div>
 
                   <div className="divide-y divide-gray-200 dark:divide-gray-800">
-                    {dataTableMemberships}
+                    {isLoadingMembership ? (
+                      <LoadingFile />
+                    ) : isErrorMembership ? (
+                      <ErrorFile
+                        title="404"
+                        description="Error find data please try again..."
+                      />
+                    ) : Number(dataGallery?.pages[0]?.data?.total) <= 0 ? (
+                      <EmptyData
+                        image={<LockKeyholeIcon className="size-10" />}
+                        title="Add your first listing to get started"
+                        description={`Your listing will appear on your page and be available for supporters to book. You can edit them anytime.`}
+                      />
+                    ) : user?.organizationId ? (
+                      dataGallery?.pages
+                        .flatMap((page: any) => page?.data?.value)
+                        .map((item, index) => (
+                          <ListMemberships
+                            item={item}
+                            key={index}
+                            index={index}
+                          />
+                        ))
+                    ) : null}
                   </div>
                 </div>
               </div>

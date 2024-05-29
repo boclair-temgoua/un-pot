@@ -4,7 +4,7 @@ import {
   useInputState,
   useReactHookForm,
 } from '@/components/hooks';
-import { LayoutAuth } from '@/components/layout-auth';
+import { LayoutAuth } from '@/components/layouts/auth';
 import { PhoneNumberInput } from '@/components/ui-setting';
 import { ButtonInput } from '@/components/ui-setting/button-input';
 import { TextInput, TextPasswordInput } from '@/components/ui-setting/shadcn';
@@ -133,7 +133,15 @@ const Register = () => {
     }
   };
   return (
-    <LayoutAuth title="Register">
+    <LayoutAuth
+      metas={
+        <meta
+          name="description"
+          content="Un Pot is the best way for creators and artists to accept support and membership from their fans."
+        />
+      }
+      title="Register"
+    >
       <div className="m-auto mt-10 w-full max-w-lg rounded-lg p-6 shadow-md dark:bg-black md:mt-16">
         <div className="mx-auto mt-4 flex justify-center">
           <h6 className="text-center text-xl font-bold">

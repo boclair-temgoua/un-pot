@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
-import { NavbarProps } from '../layout-dashboard/vertical-nav-dashboard';
+import { NavbarProps } from '../layouts/dashboard/vertical-nav-dashboard';
 
 const SubHorizontalNavPublicUser = ({ user }: { user: UserModel }) => {
   const t = useIntl();

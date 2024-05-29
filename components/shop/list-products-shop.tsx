@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { DeleteOneProductAPI } from '@/api-site/product';
-import { GetUploadsAPI, viewOneFileUploadAPI } from '@/api-site/upload';
+import { viewOneFileUploadAPI } from '@/api-site/upload';
 import { ProductModel } from '@/types/product';
 import {
   AlertDangerNotification,
@@ -72,17 +72,6 @@ const ListProductsShop = ({ item, index }: Props) => {
     }
   };
 
-  const { status, data: dataImages } = GetUploadsAPI({
-    organizationId: item?.organizationId,
-    model: 'PRODUCT',
-    uploadableId: `${item?.id}`,
-    uploadType: 'image',
-  });
-
-  if (status === 'pending') {
-    <p>loading...</p>;
-  }
-
   return (
     <>
       <div key={index} className="py-5">
@@ -92,8 +81,8 @@ const ListProductsShop = ({ item, index }: Props) => {
               size={100}
               shape="square"
               src={viewOneFileUploadAPI({
-                folder: 'products',
-                fileName: String(dataImages?.[0]?.path),
+                folder: 'product',
+                fileName: String(item?.uploadsImages?.[0]?.path),
               })}
               alt={item?.title}
             />
@@ -132,26 +121,26 @@ const ListProductsShop = ({ item, index }: Props) => {
               <span className="ml-1.5 text-sm">{item?.whoCanSee}</span>
             </div>
 
-            <div className="mt-4 flex items-center font-medium text-gray-600">
+            <div className="mt-3 flex items-center font-medium text-gray-600">
               <button className="font-normal">
                 <WalletIcon className="size-4" />
               </button>
               <span className="ml-1.5 text-sm">
                 {formatePrice({
+                  currency: `${item?.currency?.code}`,
                   value: Number(item?.priceDiscount ?? 0),
                   isDivide: false,
-                })}{' '}
-                {item?.currency?.symbol}
+                })}
               </span>
 
               {item?.enableDiscount ? (
                 <span className="ml-1.5 text-sm text-red-600">
                   <del>
                     {formatePrice({
+                      currency: item?.currency?.code,
                       value: Number(item?.price ?? 0),
                       isDivide: false,
-                    })}{' '}
-                    {item?.currency?.symbol}
+                    })}
                   </del>
                 </span>
               ) : null}
@@ -182,7 +171,11 @@ const ListProductsShop = ({ item, index }: Props) => {
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
-                    onClick={() => push(`/shop/${item?.id}/edit`)}
+                    onClick={() =>
+                      push(
+                        `/shop/${item?.id}/edit?tab=${item?.tab.toLocaleLowerCase()}`,
+                      )
+                    }
                   >
                     <PencilIcon className="size-4 text-gray-600 hover:text-indigo-600" />
                     <span className="ml-2 cursor-pointer hover:text-indigo-600">

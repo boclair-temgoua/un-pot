@@ -1,6 +1,6 @@
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Head from 'next/head';
-import { useInputState } from '../hooks';
+import { useInputState } from '../../hooks';
 import { HorizontalNavSite } from './horizontal-nav-site';
 import { VerticalNavSite } from './vertical-nav-site';
 

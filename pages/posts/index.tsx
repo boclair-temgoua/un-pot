@@ -1,6 +1,6 @@
 import { GetInfinitePostsAPI } from '@/api-site/post';
 import { useInputState } from '@/components/hooks/use-input-state';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { HorizontalNavCreatePost } from '@/components/post/horizontal-nav-create-post';
 import { ListPosts } from '@/components/post/list-posts';
 import { ButtonLoadMore } from '@/components/ui-setting';

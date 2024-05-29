@@ -2,7 +2,7 @@ import { GetInfiniteContributorsAPI } from '@/api-site/contributor';
 import { CreateContributorModal } from '@/components/contributor/create-contributor-modal';
 import { ListContributors } from '@/components/contributor/list-contributors';
 import { useInputState } from '@/components/hooks/use-input-state';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import {
   ButtonInput,
   ButtonLoadMore,

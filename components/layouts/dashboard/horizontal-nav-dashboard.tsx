@@ -2,10 +2,10 @@ import { logoutUsersAPI } from '@/api-site/user';
 import { capitalizeFirstLetter } from '@/utils/utils';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
-import { ThemeToggle } from '../ui-setting';
-import { AvatarComponent } from '../ui-setting/ant';
-import { LangToggle } from '../ui-setting/lang-toggle';
-import { Button } from '../ui/button';
+import { ThemeToggle } from '../../ui-setting';
+import { AvatarComponent } from '../../ui-setting/ant';
+import { LangToggle } from '../../ui-setting/lang-toggle';
+import { Button } from '../../ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,7 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '../ui/dropdown-menu';
+} from '../../ui/dropdown-menu';
 
 export type NavbarProps = {
   title: string;

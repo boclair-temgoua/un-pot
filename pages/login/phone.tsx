@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useDecrementTimer, useInputState } from '@/components/hooks';
 import { useReactHookForm } from '@/components/hooks/use-react-hook-form';
-import { LayoutAuth } from '@/components/layout-auth';
+import { LayoutAuth } from '@/components/layouts/auth';
 import { ButtonInput, PhoneNumberInput } from '@/components/ui-setting';
 import { TextInput } from '@/components/ui-setting/shadcn';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -117,7 +117,15 @@ const LoginPhone = () => {
 
   return (
     <>
-      <LayoutAuth title="Login">
+      <LayoutAuth
+        metas={
+          <meta
+            name="description"
+            content="Un Pot is the best way for creators and artists to accept support and membership from their fans."
+          />
+        }
+        title="Login"
+      >
         <div className="m-auto mt-10 w-full max-w-sm rounded-lg p-6 shadow-md dark:bg-black md:mt-16">
           <div className="mx-auto mt-4 flex justify-center">
             <h6 className="text-center text-xl font-bold">{`Log in`}</h6>

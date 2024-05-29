@@ -3,7 +3,7 @@
 import { GetOneProductAPI } from '@/api-site/product';
 import { GetOneUserAddressMeAPI } from '@/api-site/user-address';
 import { useInputState } from '@/components/hooks';
-import { LayoutCheckoutSite } from '@/components/layout-checkout-site';
+import { LayoutCheckoutSite } from '@/components/layouts/checkout';
 import { CreatePaymentPayPal } from '@/components/payment/create-payment-paypal';
 import { CreateCardStripe } from '@/components/payment/stripe/create-payment-stripe';
 import { ListCarouselUpload } from '@/components/shop/list-carousel-upload';

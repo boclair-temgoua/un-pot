@@ -13,7 +13,8 @@
     "react/jsx-key": "off",
     "tailwindcss/no-custom-classname": "off",
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-    "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
+    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
+    "@next/next/no-img-element": "off"
   },
   "settings": {
     "tailwindcss": {

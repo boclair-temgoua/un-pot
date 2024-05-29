@@ -1,5 +1,5 @@
 import { useInputState } from '@/components/hooks';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { CreateOrUpdateFormAlbumPost } from '@/components/post/create-or-update-form-album-post';
 import { CreateOrUpdateFormAudioPost } from '@/components/post/create-or-update-form-audio-post';
 import { CreateOrUpdateFormGalleryPost } from '@/components/post/create-or-update-form-gallery-post';

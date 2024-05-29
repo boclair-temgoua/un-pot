@@ -1,7 +1,7 @@
 import { GetOneMembershipAPI } from '@/api-site/membership';
 import { GetUploadsAPI } from '@/api-site/upload';
 import { useInputState } from '@/components/hooks';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { CreateOrUpdateFormMembership } from '@/components/membership/create-or-update-form-membership';
 import { ErrorFile } from '@/components/ui-setting/ant/error-file';
 import { LoadingFile } from '@/components/ui-setting/ant/loading-file';

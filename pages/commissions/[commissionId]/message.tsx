@@ -1,6 +1,6 @@
 import { GetOneProductAPI } from '@/api-site/product';
 import { useInputState } from '@/components/hooks';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { ErrorFile } from '@/components/ui-setting/ant/error-file';
 import { LoadingFile } from '@/components/ui-setting/ant/loading-file';
 import { PrivateComponent } from '@/components/util/private-component';

@@ -14,6 +14,8 @@ export const arrayProductTypes = [
 
 export type ProductType = 'DIGITAL' | 'PHYSICAL';
 
+export type ProductTab = 'AUDIO' | 'MEDIA' | 'OTHER';
+
 export type ResponseProductModel = {
   value: Array<ProductModel>;
 } & PaginationResponse;
@@ -25,6 +27,7 @@ export type ProductModel = {
   subTitle: string;
   slug: string;
   sku: string;
+  tab: string;
   whoCanSee: string;
   organizationId: string;
   urlMedia: string;
@@ -58,6 +61,7 @@ export type ProductModel = {
   profile: ProfileItemModel;
   uploadsImages: Array<UploadModel>;
   uploadsFiles: Array<UploadModel>;
+  isUnlock: number;
   discount: {
     isValid: boolean;
     percent: number;
@@ -73,6 +77,7 @@ export type ProductFormModel = {
   enableChooseQuantity: boolean;
   urlMedia: string;
   price: number;
+  tab: ProductTab;
   messageAfterPayment: string;
   description: string;
   discountId: string;

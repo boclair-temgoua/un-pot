@@ -1,18 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { DeleteOneCartAPI } from '@/api-site/cart';
-import { viewOneFileUploadAPI } from '@/api-site/upload';
 import { OneCartModel } from '@/types/cart';
-import { AlertDangerNotification } from '@/utils';
-import { Image } from 'antd';
-import React from 'react';
+import { AlertDangerNotification, formatePrice } from '@/utils';
 import { MdOutlineDeleteOutline } from 'react-icons/md';
 
 type Props = {
+  currency: string;
   index: number;
   item: OneCartModel;
 };
 
-const ListMiniCats: React.FC<Props> = ({ item, index }) => {
+const ListMiniCats = ({ item, index, currency }: Props) => {
   const { mutateAsync: saveMutation } = DeleteOneCartAPI({
     onSuccess: () => {},
     onError: (error?: any) => {},
@@ -35,22 +33,25 @@ const ListMiniCats: React.FC<Props> = ({ item, index }) => {
   return (
     <>
       <li className="flex py-4" key={index}>
-        {item?.uploadsImages?.length > 0 ? (
-          <div className="shrink-0">
+        {/* {item?.uploadsImages?.length > 0 ? (
+          <div className="group relative shrink-0">
             <Image
               width={80}
               height={50}
               preview={false}
               src={`${viewOneFileUploadAPI({
-                folder: 'products',
+                folder: 'product',
                 fileName: item?.uploadsImages[0]?.path,
               })}`}
               alt=""
+              loading="lazy"
+              className={`object-cover blur-lg`}
+              //className={`blur-xl`}
             />
           </div>
-        ) : null}
+        ) : null} */}
 
-        <div className="relative ml-5 flex flex-1 flex-col justify-between">
+        <div className="relative flex flex-1 flex-col justify-between">
           <div className="sm:grid sm:grid-cols-2 sm:gap-x-5">
             <div className="pr-9 sm:pr-5">
               <p className="text-base font-bold dark:text-white">
@@ -66,8 +67,11 @@ const ListMiniCats: React.FC<Props> = ({ item, index }) => {
                 {item?.product?.priceDiscount} x {item?.quantity}{' '}
               </p>
               <p className="text-left font-bold sm:ml-4 sm:text-right">
-                {item?.product?.priceDiscount * item?.quantity}{' '}
-                {item?.product?.currency?.code ?? ''}
+                {formatePrice({
+                  currency: currency,
+                  value: Number(item?.product?.priceDiscount * item?.quantity),
+                  isDivide: false,
+                }) ?? ''}
               </p>
             </div>
           </div>
@@ -75,7 +79,7 @@ const ListMiniCats: React.FC<Props> = ({ item, index }) => {
           <div className="absolute right-0 top-0 flex sm:bottom-0 sm:top-auto">
             <button
               onClick={() => deleteItem(item)}
-              className="text-gray-600 hover:text-red-400 focus:ring-red-400"
+              className="text-gray-600 hover:text-red-600 focus:ring-red-600"
             >
               <MdOutlineDeleteOutline className="size-5" />
             </button>

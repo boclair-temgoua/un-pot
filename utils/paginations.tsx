@@ -31,9 +31,9 @@ export type ModelType =
   | 'COMMENT';
 
 export const foldersType: KeyAsString = {
-  MEMBERSHIP: 'memberships',
-  PRODUCT: 'products',
-  POST: 'posts',
+  MEMBERSHIP: 'membership',
+  PRODUCT: 'product',
+  POST: 'post',
 };
 
 export type PaginationRequest = {

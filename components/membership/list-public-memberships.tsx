@@ -35,7 +35,7 @@ const ListPublicMemberships = ({ item }: Props) => {
             <div className="mx-auto mt-4 justify-center text-center">
               <ListCarouselUpload
                 uploads={item?.uploadsImages}
-                folder="memberships"
+                folder="membership"
                 preview={false}
                 height={250}
               />

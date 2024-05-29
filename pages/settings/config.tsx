@@ -1,4 +1,4 @@
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { HorizontalNavSetting } from '@/components/setting/horizontal-nav-setting';
 import { SwitchInput } from '@/components/ui-setting/ant/switch-input';
 import { useAuth } from '@/components/util/context-user';

@@ -1,9 +1,9 @@
 export type UploadFolderType =
-  | 'posts'
-  | 'galleries'
-  | 'products'
-  | 'memberships'
-  | 'profiles';
+  | 'post'
+  | 'gallery'
+  | 'product'
+  | 'membership'
+  | 'profile';
 
 export type UploadModel = {
   createdAt: Date;

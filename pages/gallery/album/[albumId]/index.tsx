@@ -1,5 +1,5 @@
 import { TableGallery } from '@/components/gallery/table-gallery';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { useAuth } from '@/components/util/context-user';
 import { PrivateComponent } from '@/components/util/private-component';
 import { useRouter } from 'next/router';

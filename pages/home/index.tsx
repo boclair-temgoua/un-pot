@@ -1,7 +1,7 @@
 'use client';
 
 import { GetInfiniteFollowsPostsAPI } from '@/api-site/post';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { ListFollowPosts } from '@/components/post/list-follow-posts';
 import { PostSkeleton } from '@/components/skeleton/post-skeleton';
 import { ButtonLoadMore } from '@/components/ui-setting';

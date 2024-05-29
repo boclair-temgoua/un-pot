@@ -12,6 +12,7 @@ import {
 import { filterImageAndFile } from '@/utils/utils';
 import { UploadOutlined } from '@ant-design/icons';
 import { Alert, Upload } from 'antd';
+import { MoveLeftIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -149,7 +150,18 @@ const CreateOrUpdateFormGalleryPost = ({
 
   return (
     <>
-      <div className="mt-4 lg:order-1 lg:col-span-3 xl:col-span-4">
+      <ButtonInput
+        type="button"
+        size="sm"
+        variant="ghost"
+        onClick={() => {
+          back();
+        }}
+        icon={<MoveLeftIcon className="size-4" />}
+      >
+        Come back
+      </ButtonInput>
+      <div className="mt-2 lg:order-1 lg:col-span-3 xl:col-span-4">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flow-root">
             <div
@@ -171,7 +183,7 @@ const CreateOrUpdateFormGalleryPost = ({
                     <div className="mt-2 space-x-2 text-center">
                       <ListCarouselUpload
                         uploads={post?.uploadsImages}
-                        folder="posts"
+                        folder="post"
                         preview={false}
                         height="300px"
                         width="100%"
@@ -308,15 +320,6 @@ const CreateOrUpdateFormGalleryPost = ({
                   </div>
 
                   <div className="my-4 flex items-center space-x-4">
-                    <ButtonInput
-                      type="button"
-                      className="w-full"
-                      size="lg"
-                      variant="outline"
-                      onClick={() => back()}
-                    >
-                      Cancel
-                    </ButtonInput>
                     <ButtonInput
                       type="submit"
                       className="w-full"

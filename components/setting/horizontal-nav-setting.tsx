@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { NavbarProps } from '../layout-dashboard/vertical-nav-dashboard';
+import { NavbarProps } from '../layouts/dashboard/vertical-nav-dashboard';
 import { useAuth } from '../util/context-user';
 
 export function HorizontalNavSetting() {

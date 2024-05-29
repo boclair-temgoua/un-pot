@@ -1,5 +1,5 @@
 import { GetStatisticsTransactionsAPI } from '@/api-site/transaction';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { RecentTransactions } from '@/components/transaction/recent-transactions';
 import { AvatarComponent } from '@/components/ui-setting/ant/avatar-component';
 import { ButtonInput } from '@/components/ui-setting/button-input';

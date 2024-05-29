@@ -1,7 +1,7 @@
 import { GetOneDonationAPI } from '@/api-site/donation';
 import { HorizontalNavDonation } from '@/components/donation/horizontal-nav-donation';
 import { UpdateFormDonation } from '@/components/donation/update-form-donation';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { useAuth } from '@/components/util/context-user';
 import { PrivateComponent } from '@/components/util/private-component';
 

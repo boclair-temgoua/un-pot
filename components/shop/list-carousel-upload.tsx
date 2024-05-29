@@ -78,6 +78,7 @@ export function ListCarouselUpload(props: Props) {
                 preview={preview}
                 style={contentStyle}
                 src={`${viewOneFileUploadAPI({
+                  token: item?.token,
                   folder: folder,
                   fileName: item?.path,
                 })}`}

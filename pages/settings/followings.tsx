@@ -1,6 +1,6 @@
 import { GetInfiniteFollowingsAPI } from '@/api-site/follow';
 import { useInputState } from '@/components/hooks/use-input-state';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { HorizontalNavSetting } from '@/components/setting/horizontal-nav-setting';
 import { ButtonLoadMore, SearchInput } from '@/components/ui-setting';
 import { LoadingFile } from '@/components/ui-setting/ant';

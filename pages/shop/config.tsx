@@ -5,7 +5,7 @@ import { ListCategories } from '@/components/category/list-categories';
 import { CreateOrUpdateDiscountModal } from '@/components/discount/create-or-update-discount-modal';
 import { ListDiscounts } from '@/components/discount/list-discounts';
 import { useInputState } from '@/components/hooks/use-input-state';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { HorizontalNavShop } from '@/components/shop/horizontal-nav-shop';
 import { ButtonLoadMore, SearchInput } from '@/components/ui-setting';
 import { LoadingFile } from '@/components/ui-setting/ant';
@@ -81,7 +81,7 @@ const Configs = () => {
 
   return (
     <>
-      <LayoutDashboard title={'Setting'}>
+      <LayoutDashboard title={'Shop setting'}>
         <div className="mx-auto max-w-6xl py-6">
           <div className="mx-auto mt-8 px-4 sm:px-6 md:px-8">
             <HorizontalNavShop />

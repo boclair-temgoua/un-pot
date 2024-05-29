@@ -1,5 +1,5 @@
 import { useInputState } from '@/components/hooks';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { TableOrderItemsUser } from '@/components/order-item/table-order-items-user';
 import { PrivateComponent } from '@/components/util/private-component';
 

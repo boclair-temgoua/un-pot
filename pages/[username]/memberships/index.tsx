@@ -1,5 +1,5 @@
 import { GetOneUserPublicAPI } from '@/api-site/user';
-import { LayoutUserPublicSite } from '@/components/layout-user-public-site';
+import { LayoutUserPublicSite } from '@/components/layouts/user-public-site';
 import { PublicMemberships } from '@/components/membership/public-memberships';
 import { ErrorFile } from '@/components/ui-setting/ant/error-file';
 import { LoadingFile } from '@/components/ui-setting/ant/loading-file';

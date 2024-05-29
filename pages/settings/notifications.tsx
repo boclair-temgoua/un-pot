@@ -1,7 +1,7 @@
-import { PrivateComponent } from '@/components/util/private-component';
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/layout-dashboard';
 import { HorizontalNavSetting } from '@/components/setting/horizontal-nav-setting';
+import { SubmitHandler } from 'react-hook-form';
+import { PrivateComponent } from / dashboard;
 
 const Notifications = () => {
   const onSubmit: SubmitHandler<any> = (payload: any) => {

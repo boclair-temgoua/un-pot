@@ -1,7 +1,7 @@
 import { GetInfiniteDiscountsAPI } from '@/api-site/discount';
 import { CreateOrUpdateDiscountModal } from '@/components/discount/create-or-update-discount-modal';
 import { ListDiscounts } from '@/components/discount/list-discounts';
-import { LayoutDashboard } from '@/components/layout-dashboard';
+import { LayoutDashboard } from '@/components/layouts/dashboard';
 import { HorizontalNavShop } from '@/components/shop/horizontal-nav-shop';
 import { ButtonInput } from '@/components/ui-setting/button-input';
 import { PrivateComponent } from '@/components/util/private-component';
